@@ -1,55 +1,56 @@
-var books = [];
-
-function Bookadded() {
-    var title = document.getElementById("titleInput").value;
-    var author = document.getElementById("authorInput").value;
-    
-    var book = { title: title, author: author };
-    books.push(book);
-    
-    displayBooks();
-    
-    // this is just oto clear the inputs after
-    document.getElementById("titleInput").value = "";
-    document.getElementById("authorInput").value = "";
-    }
-
-    // Code to remove from the index
-function removeBook(index) {
-        books.splice(index, 1);
-        displayBooks();
-    }
-
-    // Function to displauy
+const books = [];
+// Function to display
 function displayBooks() {
-        var bookContainer = document.getElementById("bookContainer");
-        bookContainer.innerHTML = "";
+  const bookContainer = document.getElementById('bookContainer');
+  bookContainer.innerHTML = '';
 
-        books.forEach(function(book, index) {
-            var bookDiv = document.createElement("div");
-            bookDiv.className = "book";
+  // Code to remove from the index
+  function removeBook(index) {
+    books.splice(index, 1);
+    displayBooks();
+  }
 
-            var titleElement = document.createElement("p");
-            titleElement.className = "title";
-            titleElement.textContent = book.title;
-            bookDiv.appendChild(titleElement);
+  books.forEach((book, index) => {
+    const bookDiv = document.createElement('div');
+    bookDiv.className = 'book';
 
-            var authorElement = document.createElement("p");
-            authorElement.textContent = "Author: " + book.author;
-            bookDiv.appendChild(authorElement);
+    const titleElement = document.createElement('p');
+    titleElement.className = 'title';
+    titleElement.textContent = book.title;
+    bookDiv.appendChild(titleElement);
 
-            var removeButton = document.createElement("button");
-            removeButton.className = "remove-button";
-            removeButton.textContent = "Remove this Book";
-            removeButton.addEventListener("click", function() {
-                removeBook(index);
-            });
-            bookDiv.appendChild(removeButton);
+    const authorElement = document.createElement('p');
+    authorElement.textContent = `Author: ${book.author}`;
+    bookDiv.appendChild(authorElement);
 
-            bookContainer.appendChild(bookDiv);
+    const removeButton = document.createElement('button');
+    removeButton.className = 'remove-button';
+    removeButton.textContent = 'Remove this Book';
+    removeButton.addEventListener('click', () => {
+      removeBook(index);
+    });
+    bookDiv.appendChild(removeButton);
 
-            var line = document.createElement("hr");
-            bookContainer.appendChild(line);
-        });
-    }
-   
+    bookContainer.appendChild(bookDiv);
+
+    const line = document.createElement('hr');
+    bookContainer.appendChild(line);
+  });
+}
+
+function bookadded() {
+  const title = document.getElementById('titleInput').value;
+  const author = document.getElementById('authorInput').value;
+
+  const book = { title, author };
+  books.push(book);
+
+  displayBooks();
+
+  // this is just oto clear the inputs after
+  document.getElementById('titleInput').value = '';
+  document.getElementById('authorInput').value = '';
+}
+
+displayBooks();
+bookadded();
