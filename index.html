@@ -7,19 +7,15 @@
 </head>
 <body>
     <h1>Awesome Books</h1>
-    <div>
-        <p>Name of book : </p>
-        <p>Author of book : </p>
-        <button>Remove</button>
-        <hr>
+    <div id="bookContainer">
     </div>
     <div>
-    <form>
-        <div><input type="text" name="title" id="title" placeholder="Title" required></div>
-        <div><input type="text" name="author" id="author" placeholder="Author" required></div>
-        <div><button id="add-data" type="submit">Add</button></div>
-    </form>    
-    </div>
+        <form>
+            <div><input type="text" name="title" id="titleInput" placeholder="Title" required></div>
+            <div><input type="text" name="author" id="authorInput" placeholder="Author" required></div>
+            <div><button onclick="Bookadded()">Add a New Book</button></div>
+        </form>    
+        </div>
 
     <script src="app.js"></script>
 </body>
