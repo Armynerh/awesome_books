@@ -52,4 +52,3 @@ function displayBooks() {
             bookContainer.appendChild(line);
         });
     }
-   
