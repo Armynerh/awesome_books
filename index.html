@@ -1,23 +1,18 @@
+html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Books -JavaScript Project</title>
+  <title>Book Library</title>
 </head>
 <body>
-    <h1>Awesome Books</h1>
-    <div id="bookContainer">
-    </div>
-    <div>
-        <form>
-            <div><input type="text" name="title" id="titleInput" placeholder="Title" required></div>
-            <div><input type="text" name="auth" id="authorInput" placeholder="Author" required></div>
-            <div><button onclick="bookadded()">Add a New Book</button></div>
-        </form>    
-        </div>
+  <h1>Book Library</h1>
+  <form id="bookForm">
+    <input type="text" id="titleInput" placeholder="Title" required>
+    <input type="text" id="authorInput" placeholder="Author" required>
+    <button type="submit">Add Book</button>
+  </form>
+  <ul id="bookList"></ul>
 
-    <script src="app.js"></script>
-
+  <script src="app.js"></script>
 </body>
 </html>

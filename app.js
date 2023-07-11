@@ -1,68 +1,66 @@
-let books = [];
-
-/* Create function that runs when document loads to populate books array/collection with values from local storage
-*/
-
-  
-
-// Function to display
-function displayBooks() {
-  const bookContainer = document.getElementById('bookContainer');
-  bookContainer.innerHTML = '';
-
-  // Code to remove from the index
-  function removeBook(index) {
-    // remove book from collection using filter by id
-    books.splice(index, 1);
-    // remove book from loclStorage using filter by id
-    displayBooks();
+javascript;
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if books exist in local storage
+  if (localStorage.getItem('books') === null) {
+    // If not, initialize an empty array
+    localStorage.setItem('books', JSON.stringify([]));
+  } else {
+    // If yes, retrieve the books array from local storage
+    const books = JSON.parse(localStorage.getItem('books'));
+    displayBooks(books);
   }
 
-  books.forEach((book, index) => {
-    const bookDiv = document.createElement('div');
-    bookDiv.className = 'book';
-
-    const titleElement = document.createElement('p');
-    titleElement.className = 'title';
-    titleElement.textContent = book.title;
-    bookDiv.appendChild(titleElement);
-
-    const authorElement = document.createElement('p');
-    authorElement.textContent = `Author: ${book.author}`;
-    bookDiv.appendChild(authorElement);
-
-    const removeButton = document.createElement('button');
-    removeButton.className = 'remove-button';
-    removeButton.textContent = 'Remove this Book';
-    removeButton.addEventListener('click', () => {
-      removeBook(index);
-    });
-    bookDiv.appendChild(removeButton);
-
-    bookContainer.appendChild(bookDiv);
-
-    const line = document.createElement('hr');
-    bookContainer.appendChild(line);
+  // Handle book form submission
+  document.getElementById('bookForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.getElementById('titleInput').value;
+    const author = document.getElementById('authorInput').value;
+    addBook(title, author);
+    document.getElementById('bookForm').reset();
   });
-}
 
+  // Function to add a book to the library
+  function addBook(title, author) {
+    const book = {
+      title,
+      author,
+    };
 
-function bookadded() {
-  const title = document.getElementById('titleInput').value;
-  const author = document.getElementById('authorInput').value;
-  const id = `${books.length - 1}-${title}`;
+    const books = JSON.parse(localStorage.getItem('books'));
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
 
-  const book = { title, author, id };
-  books.push(book);
-  // Implement ME: Push to local storage
-  savedFormData()
-  displayBooks();
-  
+    displayBooks(books);
+  }
 
-  // this is just oto clear the inputs after
-  document.getElementById('titleInput').value = '';
-  document.getElementById('authorInput').value = '';
-}
+  // Function to remove a book from the library
+  function removeBook(index) {
+    const books = JSON.parse(localStorage.getItem('books'));
+    books.splice(index, 1);
+    localStorage.setItem('books', JSON.stringify(books));
 
-displayBooks();
-bookadded();
+    displayBooks(books);
+  }
+
+  // Function to display the books in HTML
+  function displayBooks(books) {
+    const bookList = document.getElementById('bookList');
+    bookList.innerHTML = '';
+
+    for (let i = 0; i < books.length; i++) {
+      const book = books[i];
+      const li = document.createElement('li');
+      li.textContent = `${book.title} by ${book.author}`;
+
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Remove';
+      removeButton.setAttribute('data-index', i);
+      removeButton.addEventListener('click', function () {
+        removeBook(this.getAttribute('data-index'));
+      });
+
+      li.appendChild(removeButton);
+      bookList.appendChild(li);
+    }
+  }
+});
