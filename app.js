@@ -1,15 +1,14 @@
 var books = [];
 
-// codes to preserve data in the browser
-window.onload = function() {
+window.onload = function(){
     var storedBooks = localStorage.getItem('books');
-    if (storedBooks) {
+    if (storedBooks){
         books = JSON.parse(storedBooks);
-        displayBooks();
+        displayBooks()
     }
 };
 
-function Bookadded() {
+function bookadded() {
     var title = document.getElementById("titleInput").value;
     var author = document.getElementById("authorInput").value;
     
@@ -22,8 +21,9 @@ function Bookadded() {
     document.getElementById("titleInput").value = "";
     document.getElementById("authorInput").value = "";
 
-     // this wil be to Save books to localStorage
-     localStorage.setItem('books', JSON.stringify(books));
+    // to save books storage
+    localStorage.setItem('books', JSON.stringify(books));
+
     }
 
     // Code to remove from the index
@@ -31,7 +31,6 @@ function removeBook(index) {
         books.splice(index, 1);
         displayBooks();
 
-         // this wil be to Save books to localStorage
      localStorage.setItem('books', JSON.stringify(books));
     }
 
@@ -46,11 +45,11 @@ function displayBooks() {
 
             var titleElement = document.createElement("p");
             titleElement.className = "title";
-            titleElement.textContent = book.title;
+            titleElement.textContent = "Title : " + book.title;
             bookDiv.appendChild(titleElement);
 
             var authorElement = document.createElement("p");
-            authorElement.textContent = "Author: " + book.author;
+            authorElement.textContent = "Author : " + book.author;
             bookDiv.appendChild(authorElement);
 
             var removeButton = document.createElement("button");
@@ -67,4 +66,3 @@ function displayBooks() {
             bookContainer.appendChild(line);
         });
     }
-
