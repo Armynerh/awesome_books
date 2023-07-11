@@ -1,5 +1,4 @@
 let books = [];
-// displaying books details
 function displayBooks() {
   const bookContainer = document.getElementById('bookContainer');
   bookContainer.innerHTML = '';
@@ -18,16 +17,16 @@ function displayBooks() {
     removeButton.className = 'remove-button';
     removeButton.textContent = 'Remove';
     removeButton.addEventListener('click', () => {
-      removeBook(index);// eslint-disable-line no-use-before-define
-      bookDiv.appendChild(removeButton);
-      bookContainer.appendChild(bookDiv);
-      const line = document.createElement('hr');
-      bookContainer.appendChild(line);
+      removeBook(index); // eslint-disable-line
     });
+    bookDiv.appendChild(removeButton);
+    bookContainer.appendChild(bookDiv);
+    const line = document.createElement('hr');
+    bookContainer.appendChild(line);
   });
 }
 // this function is to add and is link with the hmtl button
-function bookadded() { // eslint-disable-line no-unused-vars
+function bookadded() { // eslint-disable-line
   const title = document.getElementById('titleInput').value;
   const author = document.getElementById('authorInput').value;
   const book = { title, author };
@@ -44,7 +43,7 @@ function removeBook(index) {
   localStorage.setItem('books', JSON.stringify(books));
 }
 // Load books from localStorage on page load
-window.onload = function () { // eslint-disable-line func-names
+window.onload = function () { // eslint-disable-line
   const storedBooks = localStorage.getItem('books');
   if (storedBooks) {
     books = JSON.parse(storedBooks);
