@@ -1,6 +1,6 @@
 let books = [];
 
-//displaying books details
+// displaying books details
 function displayBooks() {
   const bookContainer = document.getElementById('bookContainer');
   bookContainer.innerHTML = '';
@@ -34,7 +34,7 @@ function displayBooks() {
   });
 }
 
-//this function is to add and is link with the hmtl button
+// this function is to add and is link with the hmtl button
 function bookadded() { // eslint-disable-line
   const title = document.getElementById('titleInput').value;
   const author = document.getElementById('authorInput').value;
@@ -50,7 +50,7 @@ function bookadded() { // eslint-disable-line
   localStorage.setItem('books', JSON.stringify(books));
 }
 
-//this function is here to remove 
+// this function is here to remove
 function removeBook(index) {
   books.splice(index, 1);
   displayBooks();
