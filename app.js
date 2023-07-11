@@ -1,5 +1,14 @@
 var books = [];
 
+// codes to preserve data in the browser
+window.onload = function() {
+    var storedBooks = localStorage.getItem('books');
+    if (storedBooks) {
+        books = JSON.parse(storedBooks);
+        displayBooks();
+    }
+};
+
 function Bookadded() {
     var title = document.getElementById("titleInput").value;
     var author = document.getElementById("authorInput").value;
@@ -12,12 +21,18 @@ function Bookadded() {
     // this is just oto clear the inputs after
     document.getElementById("titleInput").value = "";
     document.getElementById("authorInput").value = "";
+
+     // this wil be to Save books to localStorage
+     localStorage.setItem('books', JSON.stringify(books));
     }
 
     // Code to remove from the index
 function removeBook(index) {
         books.splice(index, 1);
         displayBooks();
+
+         // this wil be to Save books to localStorage
+     localStorage.setItem('books', JSON.stringify(books));
     }
 
     // Function to displauy
@@ -52,3 +67,4 @@ function displayBooks() {
             bookContainer.appendChild(line);
         });
     }
+
