@@ -1,52 +1,79 @@
-let books = [];
-function displayBooks() {
-  const bookContainer = document.getElementById('bookContainer');
-  bookContainer.innerHTML = '';
-  books.forEach((book, index) => {
-    const bookDiv = document.createElement('div');
-    bookDiv.className = 'book';
-    const titleElement = document.createElement('p');
-    titleElement.className = 'book-details';
-    titleElement.textContent = `Title: ${book.title}`;
-    bookDiv.appendChild(titleElement);
-    const authorElement = document.createElement('p');
-    authorElement.className = 'book-details';
-    authorElement.textContent = `Author: ${book.author}`;
-    bookDiv.appendChild(authorElement);
-    const removeButton = document.createElement('button');
-    removeButton.className = 'remove-button';
-    removeButton.textContent = 'Remove';
-    removeButton.addEventListener('click', () => {
-      removeBook(index); // eslint-disable-line
-    });
-    bookDiv.appendChild(removeButton);
-    bookContainer.appendChild(bookDiv);
-    const line = document.createElement('hr');
-    bookContainer.appendChild(line);
-  });
-}
-// this function is to add and is link with the hmtl button
-function bookadded() { // eslint-disable-line
-  const title = document.getElementById('titleInput').value;
-  const author = document.getElementById('authorInput').value;
-  const book = { title, author };
-  books.push(book);
-  displayBooks();
-  document.getElementById('titleInput').value = '';
-  document.getElementById('authorInput').value = '';
-  localStorage.setItem('books', JSON.stringify(books));
-}
-// this function is here to remove
-function removeBook(index) {
-  books.splice(index, 1);
-  displayBooks();
-  localStorage.setItem('books', JSON.stringify(books));
-}
-// Load books from localStorage on page load
-window.onload = function () { // eslint-disable-line
-  const storedBooks = localStorage.getItem('books');
-  if (storedBooks) {
-    books = JSON.parse(storedBooks);
-    displayBooks();
+class Book { // eslint-disable-line max-classes-per-file
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
+}
+
+class ManageBookDetails {
+  constructor() {
+    this.books = [];
+  }
+
+  displayBooks() {
+    const bookTableBody = document.getElementById('bookTableBody');
+    bookTableBody.innerHTML = '';
+
+    this.books.forEach((book, index) => {
+      const row = document.createElement('tr');
+
+      const titleCell = document.createElement('td');
+      titleCell.textContent = book.title;
+      row.appendChild(titleCell);
+
+      const authorCell = document.createElement('td');
+      authorCell.textContent = book.author;
+      row.appendChild(authorCell);
+
+      const removeCell = document.createElement('td');
+      const removeButton = document.createElement('button');
+      removeButton.className = 'remove-button';
+      removeButton.textContent = 'Remove';
+      removeButton.addEventListener('click', () => {
+        this.removeBook(index);
+      });
+      removeCell.appendChild(removeButton);
+      row.appendChild(removeCell);
+
+      bookTableBody.appendChild(row);
+    });
+  }
+
+  Bookadded() {
+    const title = document.getElementById('titleInput').value;
+    const author = document.getElementById('authorInput').value;
+
+    const book = new Book(title, author);
+    this.books.push(book);
+
+    this.displayBooks();
+
+    document.getElementById('titleInput').value = '';
+    document.getElementById('authorInput').value = '';
+
+    localStorage.setItem('books', JSON.stringify(this.books));
+  }
+
+  removeBook(index) {
+    this.books.splice(index, 1);
+    this.displayBooks();
+    localStorage.setItem('books', JSON.stringify(this.books));
+  }
+
+  loadBooks() {
+    const storedBooks = localStorage.getItem('books');
+    if (storedBooks) {
+      this.books = JSON.parse(storedBooks);
+      this.displayBooks();
+    }
+  }
+}
+
+const bookManager = new ManageBookDetails();
+window.onload = () => {
+  bookManager.loadBooks();
 };
+
+function Bookadded() { // eslint-disable-line no-unused-vars
+  bookManager.Bookadded();
+}
