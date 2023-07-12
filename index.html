@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Awesome Books -JavaScript Project</title>
 </head>
 <body>
-    <h1>Awesome Books</h1>
-    <div id="bookContainer">
+    <h1>Welcome to Kenny and Waza Book store</h1>
+
+    <div class="container">
+            <table id="bookTable" class="book-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="bookTableBody"></tbody>
+            </table>
+
+            <div class="form-title">
+                <hr class="line">
+                <h2>Add a new book</h2>
+            </div>
+            <div class="form-group">
+                <input type="text" id="titleInput" class="input-field" placeholder="Title" required/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="authorInput" class="input-field" placeholder="Author" required/>
+            </div>
+            <div class="form-group">
+                <button onclick="Bookadded()" class="button">Add Book</button>
+            </div>
     </div>
-    <div>
-        <form>
-            <div><input type="text" name="title" id="titleInput" placeholder="Title" required></div>
-            <div><input type="text" name="auth" id="authorInput" placeholder="Author" required></div>
-            <div><button type="submit" onclick="bookadded()">Add a New Book</button></div>
-        </form>    
-        </div>
-
     <script src="app.js"></script>
-
 </body>
 </html>
