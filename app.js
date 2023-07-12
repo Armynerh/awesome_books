@@ -1,4 +1,4 @@
-class Book {
+class Book { // eslint-disable-line max-classes-per-file
   constructor(title, author) {
     this.title = title;
     this.author = author;
@@ -74,6 +74,6 @@ window.onload = () => {
   bookManager.loadBooks();
 };
 
-function Bookadded() {
+function Bookadded() { // eslint-disable-line no-unused-vars
   bookManager.Bookadded();
 }
