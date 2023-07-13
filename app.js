@@ -77,3 +77,14 @@ window.onload = () => {
 function Bookadded() { // eslint-disable-line no-unused-vars
   bookManager.Bookadded();
 }
+
+function updateDateTime() {
+  const dateTimeElement = document.getElementById('date');
+  const currentDateTime = new Date();
+  const options = {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',
+  };
+  const dateTimeString = currentDateTime.toLocaleDateString(undefined, options);
+  dateTimeElement.textContent = dateTimeString;
+}
+setInterval(updateDateTime, 1000);

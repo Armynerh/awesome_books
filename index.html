@@ -7,6 +7,19 @@
     <title>Awesome Books -JavaScript Project</title>
 </head>
 <body>
+    <header>
+        <nav class="nav-bar">
+            <div>Awesome Books</div>
+            <div class="nav-list">
+               <div class="nav-items list-nav"><a href="#">List</a></div>
+               <div class="nav-items add-nav"><a href="#">Add new</a></div>
+               <div class="nav-items contact-nav"><a href="#">Contact</a></div>
+            </div>
+        </nav>
+       <div class="date" id="date"><p></p></div> 
+    </header>
+    <main>
+    <section>
     <h1>Welcome to Kenny and Waza Book store</h1>
 
     <div class="container">
@@ -20,7 +33,8 @@
                 </thead>
                 <tbody id="bookTableBody"></tbody>
             </table>
-
+        </section>
+        <section class="form-cover">
             <div class="form-title">
                 <hr class="line">
                 <h2>Add a new book</h2>
@@ -36,6 +50,31 @@
                 <button onclick="Bookadded()" class="button">Add Book</button>
             </div>
     </div>
+</section>
+<section>
+    <div class="contact-container">
+        <div> <h3>Contact Information</h3></div>
+        <div>
+            <p>Do you have any questions or you just want to say "Hello"?<br>
+                You can reach out to us!
+                 </p>
+                 <div>
+                    <ul>
+                        <li>Our email: email@mail.com</li>
+                        <li>Our phone number: 0043586534422</li>
+                        <li>Our address: StreetName 22, 84503 City, Country</li>
+                    </ul>
+                 </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer>
+    <div class="copy">
+        <p>Copyright  ...</p>
+    </div>
+</footer>
+<script src="nav.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
