@@ -21,9 +21,6 @@ h1 {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
-
-
 .form-title hr {
   width: 100px;
   height: 2px;
@@ -60,7 +57,7 @@ input::placeholder {
   padding: 8px 12px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 33%;
+  margin-left: 42%;
   border-radius: 4px;
   border: 2px solid #000;
 }
