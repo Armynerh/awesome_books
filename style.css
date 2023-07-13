@@ -21,6 +21,7 @@ h1 {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .form-title hr {
   width: 100px;
   height: 2px;
@@ -155,19 +156,22 @@ nav a {
 .container.active {
   display: block;
 }
-.form-cover{
-  display:none;
+
+.form-cover {
+  display: none;
 }
 
 .form-cover.active {
   display: block;
 }
-.list-nav{
-    padding-right: 3px;
+
+.list-nav {
+  padding-right: 3px;
 }
-footer{
-  position:fixed;
-  left:0px;
-  bottom:0px;
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
 }

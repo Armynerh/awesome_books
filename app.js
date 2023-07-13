@@ -78,12 +78,13 @@ function Bookadded() { // eslint-disable-line no-unused-vars
   bookManager.Bookadded();
 }
 
-function updateDateTime(){
-  var dateTimeElement = document.getElementById('date');
-  var currentDateTime = new Date();
-  var options = {weekday:'long', year:'numeric', month:'long',day:'numeric', hour:'numeric', minute:'numeric', second:'numeric'}
-  var dateTimeString = currentDateTime.toLocaleDateString(undefined, options);
+function updateDateTime() {
+  const dateTimeElement = document.getElementById('date');
+  const currentDateTime = new Date();
+  const options = {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',
+  };
+  const dateTimeString = currentDateTime.toLocaleDateString(undefined, options);
   dateTimeElement.textContent = dateTimeString;
 }
- setInterval(updateDateTime, 1000);
-
+setInterval(updateDateTime, 1000);
